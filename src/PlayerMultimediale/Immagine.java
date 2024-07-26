@@ -2,9 +2,12 @@ package PlayerMultimediale;
 
 import Interface.Luminosita;
 
-public class Immagine extends PlayerMultimediale implements Luminosita {
-    private int luminosita;
+import java.util.Objects;
+import java.util.Scanner;
 
+public class Immagine extends PlayerMultimediale implements Luminosita {
+    Scanner scanner = new Scanner(System.in);
+    private int luminosita;
 
     public Immagine(String titolo, int luminosita) {
         super(titolo);
@@ -15,12 +18,12 @@ public class Immagine extends PlayerMultimediale implements Luminosita {
         return luminosita;
     }
 
-
     public void show() {
 
         System.out.println(getTitolo() + dimensioneLuminosita());
 
     }
+
 
     @Override
     public void abbassaLuminosita() {
@@ -29,7 +32,7 @@ public class Immagine extends PlayerMultimediale implements Luminosita {
 
     @Override
     public void alzaLuminosita() {
-        this.luminosita -= 1;
+        this.luminosita += 1;
 
     }
 
@@ -41,5 +44,35 @@ public class Immagine extends PlayerMultimediale implements Luminosita {
 
         }
         return luminux;
+    }
+
+    @Override
+    public void cambioLuminositaDinamico() {
+        System.out.println("vuoi cambiare luminosita? ( yes / no )");
+        String cambiareLumi = scanner.nextLine();
+
+        while (Objects.equals(cambiareLumi, "yes")) {
+            System.out.println("Luminosita attuale: " + getLuminosita());
+
+            System.out.println("Sceglia tra ( plus / minus / esci) ");
+            String sceltaLumi = scanner.nextLine();
+            switch (sceltaLumi) {
+                case "plus": {
+                    alzaLuminosita();
+                    break;
+                }
+                case "minus": {
+                    abbassaLuminosita();
+                    break;
+                }
+                default:
+                    System.out.println("Luminosita rimasta invariata");
+
+                    cambiareLumi = "no";
+                    break;
+            }
+        }
+
+        show();
     }
 }

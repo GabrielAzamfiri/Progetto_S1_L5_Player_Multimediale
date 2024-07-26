@@ -60,18 +60,27 @@ public class Main {
             System.out.println("Inserisci il numero del Player che vuoi riprodurre!");
             sceltaPlayer = Integer.parseInt(scanner.nextLine());
             if (sceltaPlayer == 0) {
+                System.out.println("MediaPlayer turned off!");
                 break;
+            }
+            if (sceltaPlayer > 5) {
+                System.out.println("Player non presente!");
+                continue;
             }
             int indexPlayer = sceltaPlayer - 1;
             if (players[indexPlayer] instanceof Immagine) {
-                Immagine immagine1 = (Immagine) players[indexPlayer];
-                immagine1.show();
+                Immagine immagine = (Immagine) players[indexPlayer];
+                immagine.show();
+                immagine.cambioLuminositaDinamico();
+
             } else if (players[indexPlayer] instanceof Video) {
-                Video video1 = (Video) players[indexPlayer];
-                video1.play();
+                Video video = (Video) players[indexPlayer];
+                video.play();
+                video.cambioLuminositaDinamico();
+
             } else if (players[indexPlayer] instanceof Audio) {
-                Audio audio1 = (Audio) players[indexPlayer];
-                audio1.play();
+                Audio audio = (Audio) players[indexPlayer];
+                audio.play();
             }
         }
         ;

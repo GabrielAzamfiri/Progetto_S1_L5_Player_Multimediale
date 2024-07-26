@@ -8,4 +8,7 @@ public interface Luminosita {
     public void alzaLuminosita();
 
     public String dimensioneLuminosita();
+
+    public void cambioLuminositaDinamico();
+
 }

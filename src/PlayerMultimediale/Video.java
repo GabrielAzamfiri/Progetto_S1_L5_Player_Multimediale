@@ -4,7 +4,11 @@ import Interface.Luminosita;
 import Interface.Play;
 import Interface.Volume;
 
+import java.util.Objects;
+import java.util.Scanner;
+
 public class Video extends PlayerMultimediale implements Play, Volume, Luminosita {
+    Scanner scanner = new Scanner(System.in);
     private int durata;
     private int volume;
     private int luminosita;
@@ -77,5 +81,35 @@ public class Video extends PlayerMultimediale implements Play, Volume, Luminosit
 
         }
         return luminux;
+    }
+
+    @Override
+    public void cambioLuminositaDinamico() {
+        System.out.println("vuoi cambiare luminosita? ( yes / no )");
+        String cambiareLumi = scanner.nextLine();
+
+        while (Objects.equals(cambiareLumi, "yes")) {
+            System.out.println("Luminosita attuale: " + getLuminosita());
+
+            System.out.println("Sceglia tra ( plus / minus / esci) ");
+            String sceltaLumi = scanner.nextLine();
+            switch (sceltaLumi) {
+                case "plus": {
+                    alzaLuminosita();
+                    break;
+                }
+                case "minus": {
+                    abbassaLuminosita();
+                    break;
+                }
+                default:
+                    System.out.println("Fine modifica Luminosita");
+
+                    cambiareLumi = "no";
+                    break;
+            }
+        }
+
+        play();
     }
 }
