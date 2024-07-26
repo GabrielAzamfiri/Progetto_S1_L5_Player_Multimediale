@@ -77,10 +77,12 @@ public class Main {
                 Video video = (Video) players[indexPlayer];
                 video.play();
                 video.cambioLuminositaDinamico();
+                video.cambioVolumeDinamico();
 
             } else if (players[indexPlayer] instanceof Audio) {
                 Audio audio = (Audio) players[indexPlayer];
                 audio.play();
+                audio.cambioVolumeDinamico();
             }
         }
         ;

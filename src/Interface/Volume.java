@@ -7,4 +7,6 @@ public interface Volume {
     public void alzaVolume();
 
     public String dimensioneVolume();
+
+    public void cambioVolumeDinamico();
 }

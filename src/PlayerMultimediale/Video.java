@@ -63,6 +63,35 @@ public class Video extends PlayerMultimediale implements Play, Volume, Luminosit
     }
 
     @Override
+    public void cambioVolumeDinamico() {
+        System.out.println("vuoi cambiare Volume? ( yes / no )");
+        String cambiareLumi = scanner.nextLine();
+
+        while (Objects.equals(cambiareLumi, "yes")) {
+            System.out.println("Volume attuale: " + getVolume());
+
+            System.out.println("Sceglia tra ( plus / minus / esci) ");
+            String sceltaLumi = scanner.nextLine();
+            switch (sceltaLumi) {
+                case "plus": {
+                    alzaVolume();
+                    break;
+                }
+                case "minus": {
+                    abbassaVolume();
+                    break;
+                }
+                default:
+                    System.out.println("Volume rimasto invariato");
+
+                    cambiareLumi = "no";
+                    break;
+            }
+        }
+        play();
+    }
+
+    @Override
     public void abbassaLuminosita() {
         this.luminosita -= 1;
     }
